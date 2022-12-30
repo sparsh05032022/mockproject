@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "ProductId": "00987",
+      "ProductCode": "N321409",
+      "ProductName": "Nokia",
+      "Category": "Mobile",
+      "Price": "29000"
+    },
+    {
+      "id": 2,
+      "ProductId": "00989",
+      "ProductCode": "sdfjajh",
+      "ProductName": "dsdfkald",
+      "Category": "fkjsdk",
+      "Price": "66000"
+    },
+    {
+      "id": 3,
+      "ProductId": "8766",
+      "ProductCode": "wedfr",
+      "ProductName": "hgyt",
+      "Category": "kjiu",
+      "Price": "4325"
+    },
+    {
+      "id": 6,
+      "ProductId": "A12",
+      "ProductCode": "A144",
+      "ProductName": "cocacola",
+      "Category": "softdrink",
+      "Price": "25"
+    },
+    {
+      "id": 7,
+      "ProductId": "ds4",
+      "ProductCode": "jkk",
+      "ProductName": "kgh",
+      "Category": "kjgk",
+      "Price": "788999"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

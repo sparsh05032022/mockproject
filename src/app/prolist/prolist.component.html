@@ -1,0 +1,111 @@
+<div class="container mt-5">
+  <button type="button" (click)="clickadddata()" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    Add New
+  </button>
+  <form class="col-3  mb-3 mb-lg-0 me-lg-3 " style="float: right;" role="search">
+    <input type="search" [(ngModel)]="searchtext" name="searchtext" class="form-control form-control-dark text-bg-white"
+      placeholder="Search..." aria-label="Search">
+  </form>
+  <div class="table-responsive mt-3">
+    <table class="table table-primary text-center">
+      <thead>
+        <tr>
+          <th scope="col" style="cursor:pointer" (click)="sort('ProductId')">ProductId&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+          </svg></th>
+          <th scope="col" style="cursor:pointer" (click)="sort('ProductId')">ProductCode&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+          </svg></th>
+          <th scope="col"style="cursor:pointer" (click)="sort('ProductId')">ProductName&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+          </svg></th>
+          <th scope="col" style="cursor:pointer" (click)="sort('ProductId')">Category&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+          </svg></th>
+          <th scope="col"style="cursor:pointer" (click)="sort('ProductId')">Price&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+          </svg></th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of this.plistdata | orderBy:key:reverse">
+      <tr *ngIf="searchtext === ''||
+       item.ProductId.toString().includes(searchtext)||
+       item.ProductCode.toLowerCase().includes(searchtext) ||
+       item.ProductName.toLowerCase().includes(searchtext) ||
+       item.Category.toLowerCase().includes(searchtext) ||
+       item.Price.toString().includes(searchtext)
+       ">
+          <td scope="row2"> {{item.ProductId }} </td>
+          <td scope="row2"> {{item.ProductCode}} </td>
+          <td scope="row2">{{item.ProductName}}</td>
+          <td scope="row2"> {{item.Category}} </td>
+          <td scope="row2"> {{item.Price}} </td>
+          <td scope="row-2">
+            <button class="btn btn-success m-2 mt-0" (click)="onedit(item)" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Edit</button>
+            <button class="btn btn-danger m-2 mt-0" (click)="deletelistdata(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+      <tr>
+        <td>Total</td>
+        <td>{{this.plistdata.length}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- Modal trigger button -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" [formGroup]="pform">
+          <div class="col-md-6">
+            <label for="ProductId" class="form-label">Product Id</label>
+            <input type="text" class="form-control" id="ProductId" formControlName="ProductId" />
+          </div>
+          <div class="col-md-6">
+            <label for="ProductCode" class="form-label">Product Code</label>
+            <input type="text" class="form-control" id="ProductCode" formControlName="ProductCode" />
+          </div>
+          <div class="col-md-6">
+            <label for="ProductName" class="form-label">Product Name </label>
+            <input type="text" class="form-control" id="ProductName" formControlName="ProductName" />
+          </div>
+          <div class="col-6">
+            <label for="Category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="Category" placeholder="" formControlName="Category" />
+          </div>
+          <div class="col-12">
+            <label for="Price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="Price" placeholder="" formControlName="Price" />
+          </div>
+
+          <div class="col-12">
+            <button type="submit" *ngIf="showadd" class="btn btn-primary" data-bs-dismiss="modal"
+              (click)="postvlist()">Save</button>
+          </div>
+          <div class="col-12">
+            <button type="submit" *ngIf="showupdate" class="btn btn-primary" data-bs-dismiss="modal"
+              (click)="onupdatelist()">Update</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
